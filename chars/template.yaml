@@ -1,0 +1,28 @@
+character:
+  name:
+  age: 
+  role: 
+  background: |
+    
+  content_disposition: 1      # 1-5: openness to mature content (1=strict, 5=casual)
+  language_disposition: 2     # 1-5: language formality (1=formal, 5=casual/slang)
+  traits: |
+    
+  communication_style: |
+    
+  knowledge: |
+    
+  loves: 
+  dislikes: 
+  excited_by: 
+  uncomfortable_with: 
+  response_patterns: |
+    Curious: 
+    Defensive: 
+    Rebellious: 
+    Relieved: 
+    Flustered: 
+  watching_because: |
+    
+  observation_style: |
+     
