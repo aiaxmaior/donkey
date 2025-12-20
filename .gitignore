@@ -45,4 +45,4 @@ Thumbs.db
 # (Allows private/custom characters without accidental commits)
 chars/*
 !chars/template.yaml
-!chars/my_context.txt
+!chars/my_context.txt.template
