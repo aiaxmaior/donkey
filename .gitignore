@@ -40,3 +40,9 @@ Thumbs.db
 *.backup.py
 *.bak
 *.bk
+
+# Character profiles - ignore all except templates
+# (Allows private/custom characters without accidental commits)
+chars/*
+!chars/template.yaml
+!chars/my_context.txt
