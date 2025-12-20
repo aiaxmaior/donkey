@@ -27,9 +27,20 @@ import re
 from datetime import datetime, time as dt_time
 from difflib import SequenceMatcher
 from PIL import Image, ImageGrab, ImageChops
+import numpy as np
 import mss
 from openai import AsyncOpenAI
 from typing import Optional, List, Dict, Tuple
+
+# TurboJPEG for faster JPEG encoding (3-5x faster than PIL)
+try:
+    from turbojpeg import TurboJPEG
+    TURBOJPEG = TurboJPEG()
+    USE_TURBOJPEG = True
+except ImportError:
+    USE_TURBOJPEG = False
+    print("⚠️  TurboJPEG not installed - using PIL for JPEG encoding (slower)")
+    print("   Install with: sudo apt install libturbojpeg0-dev && pip install PyTurboJPEG")
 
 try:
     from character_profiles_dynamic import get_character_profiles, get_character_dict
@@ -384,10 +395,15 @@ Keep this context in mind when providing feedback and commentary.
             # Resize for efficiency
             img = img.resize((1440, 800), Image.Resampling.LANCZOS)
 
-            # Convert to JPEG for API
-            buffered = io.BytesIO()
-            img.save(buffered, format="JPEG", quality=85)
-            img_b64 = base64.b64encode(buffered.getvalue()).decode()
+            # Convert to JPEG for API (TurboJPEG is 3-5x faster)
+            if USE_TURBOJPEG:
+                img_array = np.array(img)
+                img_bytes = TURBOJPEG.encode(img_array, quality=85)
+                img_b64 = base64.b64encode(img_bytes).decode()
+            else:
+                buffered = io.BytesIO()
+                img.save(buffered, format="JPEG", quality=85)
+                img_b64 = base64.b64encode(buffered.getvalue()).decode()
 
             return img_b64, img
 

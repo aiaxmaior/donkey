@@ -3,3 +3,5 @@ Pillow>=10.0.0
 PyYAML>=6.0.0
 openai>=1.0.0
 gradio>=5.0.0
+numpy>=1.24.0
+PyTurboJPEG>=1.7.0  # Optional but recommended - 3-5x faster JPEG encoding
