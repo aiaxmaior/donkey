@@ -383,8 +383,7 @@ def create_gradio_interface(
                 gr.Markdown("### 💬 Chat")
                 chatbot = gr.Chatbot(   
                     label="Conversation",
-                    height=1000,
-                    type="messages"
+                    height=1000
                 )
                 
                 with gr.Row():
