@@ -1,3 +1,7 @@
+# NOTE: this Got is now deprecated and has been replaced with the react/typescript application "Vision Lab" https://github.com/aiaxmaior/vision_lab
+
+
+
 # Vision Assist - Streaming Desktop Vision Pipeline
 
 Real-time desktop monitoring with VLM-powered AI assistants that have personality!
